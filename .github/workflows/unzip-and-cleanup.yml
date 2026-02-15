@@ -1,0 +1,34 @@
+name: Unzip Project Setup
+on:
+  push:
+    paths:
+      - 'project.zip'
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup project
+        run: |
+          # Configure git
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Unzip
+          if [ -f project.zip ]; then
+            unzip -o project.zip
+            rm project.zip
+          fi
+
+          # Remove this workflow
+          rm .github/workflows/unzip-and-cleanup.yml
+
+          # Commit and push
+          git add .
+          git commit -m "Setup project: Unzip and cleanup"
+          git push
