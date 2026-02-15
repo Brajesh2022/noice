@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Accuracy Title Parser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Movie & Series Title Parser</h1>
+            <p>Deterministic, rule-based parsing for aggregation platforms.</p>
+        </header>
+        
+        <div class="input-section">
+            <label for="inputTitle">Raw Title Input</label>
+            <textarea id="inputTitle" placeholder="e.g. Stranger Things (Season 5) [Vol-3 | Ep-08 Added] Multi Audio Netflix Series"></textarea>
+            <div class="controls">
+                <button id="parseBtn">Parse Title</button>
+                <button id="runTestsBtn" class="secondary">Run Test Suite</button>
+            </div>
+        </div>
+
+        <div class="output-grid">
+            <div class="output-block">
+                <h3>JSON Output</h3>
+                <pre id="jsonOutput">// JSON result will appear here...</pre>
+            </div>
+            <div class="output-block debug-block">
+                <h3>Debug / Analysis</h3>
+                <div id="debugOutput">
+                    <p class="placeholder">Parse a title to see analysis details.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="testResults" class="test-results hidden">
+            <h3>Test Suite Results</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Display Title</th>
+                            <th>Canonical Key</th>
+                            <th>Type</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>Frontend Only • No Libraries • ES6+</p>
+        </footer>
+    </div>
+
+    <script src="parser.js"></script>
+    <script src="ui.js"></script>
+</body>
+</html>
